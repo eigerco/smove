@@ -1,0 +1,20 @@
+[package]
+name = "smove"
+authors = ["Eiger <hello@eiger.co>"]
+description = "CLI frontend for the Move compiler and VM in Substrate"
+repository = "https://github.com/eigerco/smove"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0"
+# Keep the version aligned with the clap version in the upstream repo https://github.com/move-language/move
+clap = { version = "3.2", features = ["derive"] }
+bcs = { git = "https://github.com/eigerco/bcs.git" }
+move-cli = { git = "https://github.com/eigerco/substrate-move.git" }
+move-stdlib = { git = "https://github.com/eigerco/substrate-move.git" }
+move-core-types = { git = "https://github.com/eigerco/substrate-move.git" }
+# TODO(eiger): remove eventually once the gas cost table is ready
+move-vm-test-utils = { git = "https://github.com/eigerco/substrate-move.git" }
