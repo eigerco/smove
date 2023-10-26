@@ -18,3 +18,5 @@ move-stdlib = { git = "https://github.com/eigerco/substrate-move.git" }
 move-core-types = { git = "https://github.com/eigerco/substrate-move.git" }
 # TODO(eiger): remove eventually once the gas cost table is ready
 move-vm-test-utils = { git = "https://github.com/eigerco/substrate-move.git" }
+move-package = { git = "https://github.com/eigerco/substrate-move.git" }
+move-vm-runtime = { git = "https://github.com/eigerco/substrate-move.git" }
