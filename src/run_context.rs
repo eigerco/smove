@@ -1,13 +1,15 @@
-use anyhow::{anyhow, Result};
+use anyhow::{Error, Result};
 use move_cli::Move as MoveCliArgs;
+use move_command_line_common::files::{extension_equals, find_filenames, MOVE_COMPILED_EXTENSION};
 use move_core_types::errmap::ErrorMapping;
 use move_core_types::language_storage::CORE_CODE_ADDRESS;
+use move_package::compilation::package_layout::CompiledPackageLayout;
 use move_package::source_package::parsed_manifest::SourceManifest;
 use move_package::source_package::{layout, manifest_parser};
 use move_stdlib::natives::{all_natives, GasParameters};
 use move_vm_runtime::native_functions::NativeFunctionTable;
 use move_vm_test_utils::gas_schedule::CostTable;
-use std::fs::read_to_string;
+use std::fs;
 use std::path::PathBuf;
 
 /// Move compilation related data.
@@ -34,11 +36,8 @@ impl RunContext {
         let natives = all_natives(CORE_CODE_ADDRESS, GasParameters::zeros());
         let error_descriptions = bcs::from_bytes(move_stdlib::doc::error_descriptions())?;
 
-        let manifest_string =
-            read_to_string(project_root_dir.join(layout::SourcePackageLayout::Manifest.path()))
-                .map_err(|_| anyhow!("Move.toml not found. Path: {:?}", &project_root_dir))?;
-        let toml_manifest = manifest_parser::parse_move_manifest_string(manifest_string)?;
-        let manifest = manifest_parser::parse_source_manifest(toml_manifest)?;
+        let manifest_path = project_root_dir.join(layout::SourcePackageLayout::Manifest.path());
+        let manifest = manifest_parser::parse_move_manifest_from_file(&manifest_path)?;
 
         Ok(Self {
             project_root_dir,
@@ -48,5 +47,39 @@ impl RunContext {
             natives,
             cost_table,
         })
+    }
+
+    /// Path where bundles are generated.
+    pub fn bundle_output_path(&self, bundle_name: &str) -> Result<PathBuf, Error> {
+        let package_name = self.manifest.package.name.as_str();
+
+        // Create directory "<PACKAGE_PATH>/build/<PACKAGE_NAME>/bundles/"
+        let dir = self
+            .project_root_dir
+            .join(CompiledPackageLayout::Root.path())
+            .join(package_name)
+            .join("bundles");
+
+        if !dir.exists() {
+            fs::create_dir_all(&dir)?;
+        }
+
+        Ok(dir.join(bundle_name).with_extension("mvb"))
+    }
+
+    /// Get paths for all compiled modules without dependencies.
+    pub fn get_bytecode_modules(&self) -> Result<Vec<PathBuf>> {
+        let bytecode_modules_dir = CompiledPackageLayout::CompiledModules.path().as_os_str();
+
+        let files = find_filenames(&[&self.project_root_dir], |path| {
+            // Use unwrap: if the parent exists - then it has to have a name.
+            let parent_dir = path.parent().map(|path| path.file_name().unwrap());
+
+            // If the .mv file is under "bytecode_modules" dir - bundle it.
+            extension_equals(path, MOVE_COMPILED_EXTENSION)
+                && parent_dir == Some(bytecode_modules_dir)
+        })?;
+
+        Ok(files.into_iter().map(PathBuf::from).collect())
     }
 }
