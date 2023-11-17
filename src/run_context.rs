@@ -1,4 +1,4 @@
-use anyhow::{Error, Result};
+use anyhow::{Context, Error, Result};
 use move_cli::Move as MoveCliArgs;
 use move_command_line_common::files::{extension_equals, find_filenames, MOVE_COMPILED_EXTENSION};
 use move_core_types::errmap::ErrorMapping;
@@ -37,7 +37,9 @@ impl RunContext {
         let error_descriptions = bcs::from_bytes(move_stdlib::doc::error_descriptions())?;
 
         let manifest_path = project_root_dir.join(layout::SourcePackageLayout::Manifest.path());
-        let manifest = manifest_parser::parse_move_manifest_from_file(&manifest_path)?;
+        let manifest = manifest_parser::parse_move_manifest_from_file(&manifest_path).context(
+            format!("Manifest file not found at {}", project_root_dir.display()),
+        )?;
 
         Ok(Self {
             project_root_dir,
