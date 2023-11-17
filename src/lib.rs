@@ -43,7 +43,14 @@ enum SmoveCommand {
 /// Run the smove CLI.
 pub fn smove_cli(cwd: PathBuf) -> Result<()> {
     let SmoveArgs { move_args, cmd } = SmoveArgs::parse();
-    let ctx = RunContext::new(cwd, move_args)?;
+
+    let project_root_dir = if let Some(ref project_path) = move_args.package_path {
+        project_path.canonicalize()?
+    } else {
+        cwd
+    };
+
+    let ctx = RunContext::new(project_root_dir, move_args)?;
 
     match cmd {
         SmoveCommand::MoveCommand(cmd) => run_move_cli::run_command(&ctx, cmd),
