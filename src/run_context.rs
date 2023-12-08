@@ -1,4 +1,4 @@
-use anyhow::{Context, Error, Result};
+use anyhow::{Error, Result};
 use move_cli::Move as MoveCliArgs;
 use move_command_line_common::files::{extension_equals, find_filenames, MOVE_COMPILED_EXTENSION};
 use move_core_types::errmap::ErrorMapping;
@@ -18,14 +18,14 @@ pub struct RunContext {
     pub project_root_dir: PathBuf,
     /// `move_cli` arguments.
     pub move_args: MoveCliArgs,
-    /// `Move.toml` contents.
-    pub manifest: SourceManifest,
     /// Error descriptions.
     pub error_descriptions: ErrorMapping,
     /// Native functions.
     pub natives: NativeFunctionTable,
     /// Cost table.
     pub cost_table: CostTable,
+    /// `Move.toml` contents for the current folder.
+    manifest: Option<SourceManifest>,
 }
 
 impl RunContext {
@@ -37,9 +37,7 @@ impl RunContext {
         let error_descriptions = bcs::from_bytes(move_stdlib::doc::error_descriptions())?;
 
         let manifest_path = project_root_dir.join(layout::SourcePackageLayout::Manifest.path());
-        let manifest = manifest_parser::parse_move_manifest_from_file(&manifest_path).context(
-            format!("Manifest file not found at {}", project_root_dir.display()),
-        )?;
+        let manifest = manifest_parser::parse_move_manifest_from_file(&manifest_path).ok();
 
         Ok(Self {
             project_root_dir,
@@ -51,9 +49,17 @@ impl RunContext {
         })
     }
 
+    /// Get manifest for the current folder.
+    pub fn manifest(&self) -> Result<&SourceManifest, Error> {
+        self.manifest.as_ref().ok_or(Error::msg(format!(
+            "Manifest file not found at {}",
+            self.project_root_dir.display()
+        )))
+    }
+
     /// Path where bundles are generated.
     pub fn bundle_output_path(&self, bundle_name: &str) -> Result<PathBuf, Error> {
-        let package_name = self.manifest.package.name.as_str();
+        let package_name = self.manifest()?.package.name.as_str();
 
         // Create directory "<PACKAGE_PATH>/build/<PACKAGE_NAME>/bundles/"
         let dir = self

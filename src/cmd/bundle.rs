@@ -64,7 +64,7 @@ impl Bundle {
         // Path to the output file
         let bundle_name = match self.name {
             Some(ref name) => name,
-            _ => ctx.manifest.package.name.as_str(),
+            _ => ctx.manifest()?.package.name.as_str(),
         };
         let output_file_path = ctx.bundle_output_path(bundle_name)?;
         if output_file_path.exists() {
