@@ -6,8 +6,9 @@ use move_core_types::language_storage::CORE_CODE_ADDRESS;
 use move_package::compilation::package_layout::CompiledPackageLayout;
 use move_package::source_package::parsed_manifest::SourceManifest;
 use move_package::source_package::{layout, manifest_parser};
-use move_stdlib::natives::{all_natives, GasParameters};
+use move_stdlib::natives::all_natives;
 use move_vm_runtime::native_functions::NativeFunctionTable;
+use move_vm_backend_common::gas_schedule::{INSTRUCTION_COST_TABLE, NATIVE_COST_PARAMS};
 use move_vm_test_utils::gas_schedule::CostTable;
 use std::fs;
 use std::path::PathBuf;
@@ -31,9 +32,8 @@ pub struct RunContext {
 impl RunContext {
     /// Create a new instance.
     pub fn new(project_root_dir: PathBuf, move_args: MoveCliArgs) -> Result<Self> {
-        // TODO(eiger): Use a custom cost table
-        let cost_table = move_vm_test_utils::gas_schedule::INITIAL_COST_SCHEDULE.clone();
-        let natives = all_natives(CORE_CODE_ADDRESS, GasParameters::zeros());
+        let cost_table = INSTRUCTION_COST_TABLE.clone();
+        let natives = all_natives(CORE_CODE_ADDRESS, NATIVE_COST_PARAMS.clone());
         let error_descriptions = bcs::from_bytes(move_stdlib::doc::error_descriptions())?;
 
         let manifest_path = project_root_dir.join(layout::SourcePackageLayout::Manifest.path());
