@@ -292,7 +292,7 @@ checksum = "c3ac9f8b63eca6fd385229b3675f6cc0dc5c8a5c8a54a59d4f52ffd670d87b0c"
 [[package]]
 name = "bytecode-interpreter-crypto"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "curve25519-dalek-fiat",
@@ -1325,6 +1325,9 @@ name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+dependencies = [
+ "spin",
+]
 
 [[package]]
 name = "lexical-core"
@@ -1448,7 +1451,7 @@ dependencies = [
 [[package]]
 name = "move-abigen"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1465,7 +1468,7 @@ dependencies = [
 [[package]]
 name = "move-binary-format"
 version = "0.0.3"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "hashbrown 0.14.2",
@@ -1478,12 +1481,12 @@ dependencies = [
 [[package]]
 name = "move-borrow-graph"
 version = "0.0.1"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 
 [[package]]
 name = "move-bytecode-source-map"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1498,7 +1501,7 @@ dependencies = [
 [[package]]
 name = "move-bytecode-utils"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -1510,7 +1513,7 @@ dependencies = [
 [[package]]
 name = "move-bytecode-verifier"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "fail",
@@ -1524,7 +1527,7 @@ dependencies = [
 [[package]]
 name = "move-bytecode-viewer"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "clap",
@@ -1541,7 +1544,7 @@ dependencies = [
 [[package]]
 name = "move-cli"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1587,7 +1590,7 @@ dependencies = [
 [[package]]
 name = "move-command-line-common"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "difference",
@@ -1605,7 +1608,7 @@ dependencies = [
 [[package]]
 name = "move-compiler"
 version = "0.0.1"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1635,7 +1638,7 @@ dependencies = [
 [[package]]
 name = "move-core-types"
 version = "0.0.4"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.4 (git+https://github.com/eigerco/bcs.git?branch=master)",
@@ -1654,7 +1657,7 @@ dependencies = [
 [[package]]
 name = "move-coverage"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1674,7 +1677,7 @@ dependencies = [
 [[package]]
 name = "move-disassembler"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "clap",
@@ -1692,7 +1695,7 @@ dependencies = [
 [[package]]
 name = "move-docgen"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "codespan",
@@ -1710,7 +1713,7 @@ dependencies = [
 [[package]]
 name = "move-errmapgen"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1724,7 +1727,7 @@ dependencies = [
 [[package]]
 name = "move-ir-to-bytecode"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "codespan-reporting",
@@ -1743,7 +1746,7 @@ dependencies = [
 [[package]]
 name = "move-ir-to-bytecode-syntax"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "hex",
@@ -1756,7 +1759,7 @@ dependencies = [
 [[package]]
 name = "move-ir-types"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "hex",
@@ -1770,7 +1773,7 @@ dependencies = [
 [[package]]
 name = "move-model"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "codespan",
@@ -1796,7 +1799,7 @@ dependencies = [
 [[package]]
 name = "move-package"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1833,7 +1836,7 @@ dependencies = [
 [[package]]
 name = "move-prover"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1870,7 +1873,7 @@ dependencies = [
 [[package]]
 name = "move-prover-boogie-backend"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1899,7 +1902,7 @@ dependencies = [
 [[package]]
 name = "move-read-write-set-types"
 version = "0.0.3"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -1910,7 +1913,7 @@ dependencies = [
 [[package]]
 name = "move-resource-viewer"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1925,7 +1928,7 @@ dependencies = [
 [[package]]
 name = "move-stackless-bytecode"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "codespan",
  "codespan-reporting",
@@ -1952,7 +1955,7 @@ dependencies = [
 [[package]]
 name = "move-stackless-bytecode-interpreter"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bytecode-interpreter-crypto",
@@ -1970,7 +1973,7 @@ dependencies = [
 [[package]]
 name = "move-stdlib"
 version = "0.1.1"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "hex",
  "log",
@@ -1991,7 +1994,7 @@ dependencies = [
 [[package]]
 name = "move-symbol-pool"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "once_cell",
  "serde 1.0.190",
@@ -2000,7 +2003,7 @@ dependencies = [
 [[package]]
 name = "move-table-extension"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -2017,7 +2020,7 @@ dependencies = [
 [[package]]
 name = "move-unit-test"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "better_any",
@@ -2048,10 +2051,16 @@ dependencies = [
 [[package]]
 name = "move-vm-backend-common"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "bcs 0.1.4 (git+https://github.com/eigerco/bcs.git?branch=master)",
+ "lazy_static 1.4.0",
+ "move-binary-format",
+ "move-core-types",
+ "move-stdlib",
+ "move-vm-test-utils",
+ "move-vm-types",
  "serde 1.0.190",
  "serde_bytes",
 ]
@@ -2059,7 +2068,7 @@ dependencies = [
 [[package]]
 name = "move-vm-runtime"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "better_any",
  "fail",
@@ -2076,7 +2085,7 @@ dependencies = [
 [[package]]
 name = "move-vm-support"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "blake2",
@@ -2087,7 +2096,7 @@ dependencies = [
 [[package]]
 name = "move-vm-test-utils"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -2100,7 +2109,7 @@ dependencies = [
 [[package]]
 name = "move-vm-types"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "bcs 0.1.4 (git+https://github.com/eigerco/bcs.git?branch=master)",
  "move-binary-format",
@@ -2748,7 +2757,7 @@ dependencies = [
 [[package]]
 name = "read-write-set"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -2763,7 +2772,7 @@ dependencies = [
 [[package]]
 name = "read-write-set-dynamic"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#2dabcadb6532626b974ea3d9511c8dd921766fc4"
+source = "git+https://github.com/eigerco/substrate-move.git#20405dcf369d3d26e320d355c746ea327e1464fb"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -3245,6 +3254,12 @@ dependencies = [
  "libc",
  "windows-sys",
 ]
+
+[[package]]
+name = "spin"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
 name = "stable_deref_trait"
