@@ -37,7 +37,7 @@ pub struct Bundle {
 
 impl Bundle {
     /// Executes the command.
-    pub fn run(&mut self, ctx: &RunContext) -> Result<()> {
+    pub fn execute(&mut self, ctx: &RunContext) -> Result<()> {
         // Build all move modules
         run_move_cli::execute_build(ctx)?;
 
