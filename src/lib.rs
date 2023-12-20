@@ -38,6 +38,11 @@ enum SmoveCommand {
     /// Run the script and create a transcation for the pallet.
     #[clap(about = "Run the script and create a transcation for the pallet")]
     Run {},
+
+    /// Commands for accessing the node.
+    #[clap(about = "Commands for accessing the node")]
+    #[clap(subcommand)]
+    Node(cmd::node::Node),
 }
 
 /// Run the smove CLI.
@@ -54,7 +59,8 @@ pub fn smove_cli(cwd: PathBuf) -> Result<()> {
 
     match cmd {
         SmoveCommand::MoveCommand(cmd) => run_move_cli::run_command(&ctx, cmd),
-        SmoveCommand::Bundle { mut cmd } => cmd.run(&ctx),
+        SmoveCommand::Bundle { mut cmd } => cmd.execute(&ctx),
+        SmoveCommand::Node(mut cmd) => cmd.execute(),
         SmoveCommand::Run {} => unimplemented!(),
     }
 }

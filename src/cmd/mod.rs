@@ -1,3 +1,4 @@
 //! List of smove subcommands.
 
-pub(crate) mod bundle;
+pub(super) mod bundle;
+pub(super) mod node;
