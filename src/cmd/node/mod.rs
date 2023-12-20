@@ -27,6 +27,13 @@ pub enum Rpc {
         cmd: rpc::estimate_gas_publish::EstimateGasPublishModule,
     },
 
+    /// Estimate gas for publishing a bundle.
+    #[clap(about = "Estimate gas for publishing a bundle")]
+    EstimateGasPublishBundle {
+        #[clap(flatten)]
+        cmd: rpc::estimate_gas_publish::EstimateGasPublishBundle,
+    },
+
     /// Convert gas to weight.
     #[clap(about = "Convert gas to weight")]
     GasToWeight {
@@ -40,6 +47,7 @@ impl Rpc {
     pub fn execute(&mut self) -> Result<()> {
         match self {
             Self::EstimateGasPublishModule { cmd } => cmd.execute(),
+            Self::EstimateGasPublishBundle { cmd } => cmd.execute(),
             Self::GasToWeight { cmd } => cmd.execute(),
         }
     }
