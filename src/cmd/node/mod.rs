@@ -42,7 +42,7 @@ pub enum Rpc {
     },
 
     /// Get a module's ABI.
-    #[clap(about = "Convert gas to weight")]
+    #[clap(about = "Get a module's ABI")]
     GetModuleAbi {
         #[clap(flatten)]
         cmd: rpc::get_module_abi::GetModuleAbi,
