@@ -40,6 +40,13 @@ pub enum Rpc {
         #[clap(flatten)]
         cmd: rpc::gas_to_weight::GasToWeight,
     },
+
+    /// Get a module's ABI.
+    #[clap(about = "Convert gas to weight")]
+    GetModuleAbi {
+        #[clap(flatten)]
+        cmd: rpc::get_module_abi::GetModuleAbi,
+    },
 }
 
 impl Rpc {
@@ -49,6 +56,7 @@ impl Rpc {
             Self::EstimateGasPublishModule { cmd } => cmd.execute(),
             Self::EstimateGasPublishBundle { cmd } => cmd.execute(),
             Self::GasToWeight { cmd } => cmd.execute(),
+            Self::GetModuleAbi { cmd } => cmd.execute(),
         }
     }
 }
