@@ -10,7 +10,7 @@ mod run_move_cli;
 
 /// CLI frontend for the Move compiler and VM in Substrate.
 #[derive(Parser)]
-#[clap(name = "smove", author, about, long_about = None)]
+#[clap(name = "smove", author, about, long_about = None, version)]
 struct SmoveArgs {
     /// Native move-cli arguments.
     #[clap(flatten)]
