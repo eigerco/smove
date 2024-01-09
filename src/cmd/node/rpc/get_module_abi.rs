@@ -3,6 +3,7 @@ use clap::Parser;
 use jsonrpsee::core::client::ClientT;
 use jsonrpsee::http_client::HttpClientBuilder;
 use jsonrpsee::rpc_params;
+use pallet_move::types::ModuleAbi;
 
 /// Estimate gas for publishing modules.
 #[derive(Parser, Debug)]
@@ -26,7 +27,7 @@ impl GetModuleAbi {
 
         let client = HttpClientBuilder::default().build(rpc_url)?;
         let params = rpc_params![&self.address, &self.name];
-        let response: Result<Option<Vec<u8>>, _> =
+        let response: Result<Option<ModuleAbi>, _> =
             rt.block_on(async { client.request("mvm_getModuleABI", params).await });
 
         let module_abi = response.with_context(|| "RPC result failure")?;
