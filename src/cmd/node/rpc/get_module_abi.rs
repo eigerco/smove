@@ -3,7 +3,11 @@ use clap::Parser;
 use jsonrpsee::core::client::ClientT;
 use jsonrpsee::http_client::HttpClientBuilder;
 use jsonrpsee::rpc_params;
+<<<<<<< HEAD
 use pallet_move::types::ModuleAbi;
+=======
+use move_vm_backend_common::abi::ModuleAbi;
+>>>>>>> 12aff18 (feat: update Cargo.lock, update dependency to substrate-move)
 
 /// Estimate gas for publishing modules.
 #[derive(Parser, Debug)]
