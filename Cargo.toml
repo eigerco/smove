@@ -26,5 +26,3 @@ move-vm-runtime = { git = "https://github.com/eigerco/substrate-move.git" }
 move-command-line-common = { git = "https://github.com/eigerco/substrate-move.git" }
 move-binary-format = { git = "https://github.com/eigerco/substrate-move.git" }
 move-vm-backend-common = { git = "https://github.com/eigerco/substrate-move.git", features = ["gas_schedule", "testing"] }
-pallet-move = { path = "../pallet-move" }
-
