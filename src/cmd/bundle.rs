@@ -21,9 +21,9 @@ pub struct Bundle {
     #[clap(
         short,
         long,
-        help = "Bundle name. By default it is the same as the name of the pacakge."
+        help = "Bundle name. By default it is the same as the name of the package."
     )]
-    name: Option<String>,
+    name: Option<PathBuf>,
 
     // Modules are taken from the <PROJECT_PATH>/build/<PROJECT_NAME>/bytecode_modules directory.
     // The names are case-insensitive and can be specified with an extension.mv or without it.
@@ -63,10 +63,10 @@ impl Bundle {
 
         // Path to the output file
         let bundle_name = match self.name {
-            Some(ref name) => name,
-            _ => ctx.manifest()?.package.name.as_str(),
+            Some(ref name) => name.clone(),
+            _ => PathBuf::from(ctx.manifest()?.package.name.as_str()),
         };
-        let output_file_path = ctx.bundle_output_path(bundle_name)?;
+        let output_file_path = ctx.bundle_output_path(&bundle_name)?;
         if output_file_path.exists() {
             fs::remove_file(&output_file_path)?;
         }
@@ -75,10 +75,7 @@ impl Bundle {
 
         println!(
             "Modules are bundled under: {}",
-            output_file_path
-                .canonicalize()
-                .unwrap_or_default()
-                .display()
+            output_file_path.canonicalize()?.display()
         );
 
         Ok(())
