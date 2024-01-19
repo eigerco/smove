@@ -11,7 +11,7 @@ use move_vm_backend_common::gas_schedule::{INSTRUCTION_COST_TABLE, NATIVE_COST_P
 use move_vm_runtime::native_functions::NativeFunctionTable;
 use move_vm_test_utils::gas_schedule::CostTable;
 use std::fs;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 /// Move compilation related data.
 pub struct RunContext {
@@ -58,7 +58,7 @@ impl RunContext {
     }
 
     /// Path where bundles are generated.
-    pub fn bundle_output_path(&self, bundle_name: &str) -> Result<PathBuf, Error> {
+    pub fn bundle_output_path(&self, bundle_name: &impl AsRef<Path>) -> Result<PathBuf, Error> {
         let package_name = self.manifest()?.package.name.as_str();
 
         // Create directory "<PACKAGE_PATH>/build/<PACKAGE_NAME>/bundles/"
@@ -73,6 +73,24 @@ impl RunContext {
         }
 
         Ok(dir.join(bundle_name).with_extension("mvb"))
+    }
+
+    /// Path where script transactions are generated.
+    pub fn script_tx_output_path(&self, tx_name: &impl AsRef<Path>) -> Result<PathBuf, Error> {
+        let package_name = self.manifest()?.package.name.as_str();
+
+        // Create directory "<PACKAGE_PATH>/build/<PACKAGE_NAME>/script_transactions/"
+        let dir = self
+            .project_root_dir
+            .join(CompiledPackageLayout::Root.path())
+            .join(package_name)
+            .join("script_transactions");
+
+        if !dir.exists() {
+            fs::create_dir_all(&dir)?;
+        }
+
+        Ok(dir.join(tx_name).with_extension("mvt"))
     }
 
     /// Get paths for all compiled modules without dependencies.

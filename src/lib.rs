@@ -28,16 +28,19 @@ enum SmoveCommand {
     #[clap(flatten)]
     MoveCommand(move_cli::Command),
 
-    /// Create package bundle.
-    #[clap(about = "Create package bundle")]
+    /// Create a package bundle.
+    #[clap(about = "Create a package bundle")]
     Bundle {
         #[clap(flatten)]
         cmd: cmd::bundle::Bundle,
     },
 
-    /// Run the script and create a transcation for the pallet.
-    #[clap(about = "Run the script and create a transcation for the pallet")]
-    Run {},
+    /// Create a script transaction.
+    #[clap(about = "Create a script transaction")]
+    CreateTransaction {
+        #[clap(flatten)]
+        cmd: cmd::script::CreateTransaction,
+    },
 
     /// Commands for accessing the node.
     #[clap(about = "Commands for accessing the node")]
@@ -61,6 +64,6 @@ pub fn smove_cli(cwd: PathBuf) -> Result<()> {
         SmoveCommand::MoveCommand(cmd) => run_move_cli::run_command(&ctx, cmd),
         SmoveCommand::Bundle { mut cmd } => cmd.execute(&ctx),
         SmoveCommand::Node(mut cmd) => cmd.execute(),
-        SmoveCommand::Run {} => unimplemented!(),
+        SmoveCommand::CreateTransaction { mut cmd } => cmd.execute(&ctx),
     }
 }
