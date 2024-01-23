@@ -1,11 +1,11 @@
+use super::script_args::ScriptFunctionArguments;
+use super::script_transaction::ScriptTransaction;
+use crate::run_context::RunContext;
 use anyhow::{Error, Result};
 use clap::Parser;
 use move_binary_format::file_format::CompiledScript;
 use std::fs;
 use std::path::PathBuf;
-
-use super::script_transaction::ScriptTransaction;
-use crate::run_context::RunContext;
 
 /// Create a script transaction.
 #[derive(Parser, Debug)]
@@ -13,7 +13,10 @@ use crate::run_context::RunContext;
 pub struct CreateTransaction {
     #[clap(short, long, help = "Path for the compiled Move script.")]
     compiled_script_path: PathBuf,
-    // TODO(rqnsom): add script parameters here.
+
+    /// Arguments for script functions.
+    #[clap(flatten)]
+    script_function_args: ScriptFunctionArguments,
 }
 
 impl CreateTransaction {
@@ -26,11 +29,13 @@ impl CreateTransaction {
         // Check the script bytecode and verify the parameter rules.
         verify_script_integrity(&script_bc)?;
 
+        let type_args = self.script_function_args.type_args()?;
+
         // TODO(Rqnsom): maybe use a function to create this:
         let tx = ScriptTransaction {
             bytecode: script_bc,
             args: vec![],
-            type_args: vec![],
+            type_args,
         };
 
         // Path to the output file.
