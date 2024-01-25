@@ -3422,6 +3422,7 @@ dependencies = [
  "anyhow",
  "bcs 0.1.4 (git+https://github.com/eigerco/bcs.git)",
  "clap",
+ "hex",
  "jsonrpsee",
  "move-binary-format",
  "move-cli",
