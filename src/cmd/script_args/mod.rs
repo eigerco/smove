@@ -1,7 +1,10 @@
+use anyhow::Result;
+use args::ArgWithTypeVec;
 use clap::Parser;
 use move_core_types::language_storage::TypeTag;
 use type_args::TypeArgVec;
 
+mod args;
 mod type_args;
 
 /// Arguments for script functions.
@@ -10,14 +13,15 @@ pub struct ScriptFunctionArguments {
     /// Type args.
     #[clap(flatten)]
     type_arg_vec: TypeArgVec,
-    //TODO(rqnsom): impl below in the next PR
-    //#[clap(flatten)]
-    //arg_vec: ArgWithTypeVec,
+
+    /// Function args.
+    #[clap(flatten)]
+    arg_vec: ArgWithTypeVec,
 }
 
 impl ScriptFunctionArguments {
-    /// Get type args.
-    pub fn type_args(&self) -> anyhow::Result<Vec<TypeTag>> {
+    /// Get type arguments.
+    pub fn type_args(&self) -> Result<Vec<TypeTag>> {
         let mut type_args = vec![];
 
         for arg in self.type_arg_vec.type_args.iter() {
@@ -26,5 +30,15 @@ impl ScriptFunctionArguments {
         }
 
         Ok(type_args)
+    }
+
+    /// Get function arguments.
+    pub fn args(&self) -> Result<Vec<Vec<u8>>> {
+        Ok(self
+            .arg_vec
+            .args
+            .iter()
+            .map(|arg_with_type| arg_with_type.arg.clone())
+            .collect())
     }
 }

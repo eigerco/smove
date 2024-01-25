@@ -30,11 +30,12 @@ impl CreateTransaction {
         verify_script_integrity(&script_bc)?;
 
         let type_args = self.script_function_args.type_args()?;
+        let args = self.script_function_args.args()?;
 
         // TODO(Rqnsom): maybe use a function to create this:
         let tx = ScriptTransaction {
             bytecode: script_bc,
-            args: vec![],
+            args,
             type_args,
         };
 
