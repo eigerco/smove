@@ -3432,6 +3432,7 @@ dependencies = [
  "move-stdlib",
  "move-vm-backend-common",
  "move-vm-runtime",
+ "move-vm-support",
  "move-vm-test-utils",
  "serde 1.0.195",
  "serde_json",
