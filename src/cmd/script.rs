@@ -1,9 +1,9 @@
 use super::script_args::ScriptFunctionArguments;
-use super::script_transaction::ScriptTransaction;
 use crate::run_context::RunContext;
 use anyhow::{Error, Result};
 use clap::Parser;
 use move_binary_format::file_format::CompiledScript;
+use move_vm_backend_common::types::ScriptTransaction;
 use std::fs;
 use std::path::PathBuf;
 
