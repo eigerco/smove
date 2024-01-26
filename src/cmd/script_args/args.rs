@@ -98,14 +98,28 @@ impl fmt::Display for FunctionArgType {
     }
 }
 
+/// Parse the address which can have multiple formats.
+///
+/// - Move address format
+///   - Strict raw 32-hex format (e.g. 1234abce5678ef901234abce5678ef901234abce5678ef901234abce5678ef90)
+///   - Flexible prefixed hex format (e.g. 0x5)
+///
+/// - SS58 address format
+///   - e.g. 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694t
+fn parse_address(addr: &str) -> Result<AccountAddress> {
+    if let Ok(addr) = move_vm_support::ss58_address::ss58_to_move_address(addr) {
+        // TODO: distant future - if an error is in ss58 address, the user won't get any ss58-related error
+        Ok(addr)
+    } else {
+        AccountAddress::from_str(addr).map_err(Error::msg)
+    }
+}
+
 impl FunctionArgType {
     /// Parse a standalone argument (not a vector) from string slice into BCS representation.
     fn parse_arg_str(&self, arg: &str) -> Result<Vec<u8>> {
         match self {
-            FunctionArgType::Address => {
-                bcs::to_bytes(&AccountAddress::from_str(arg).map_err(Error::msg)?)
-                    .map_err(Error::msg)
-            }
+            FunctionArgType::Address => bcs::to_bytes(&parse_address(arg)?).map_err(Error::msg),
             FunctionArgType::Bool => {
                 bcs::to_bytes(&bool::from_str(arg).map_err(Error::msg)?).map_err(Error::msg)
             }
@@ -170,6 +184,7 @@ impl FunctionArgType {
                     common_sub_arg_depth = Some(sub_arg_depth);
                     bcs.append(&mut sub_arg_bcs); // Append sub-argument BCS.
                 }
+
                 // Default sub-argument depth is 0 for when no sub-arguments were looped over.
                 Ok(ArgWithType {
                     vector_depth: common_sub_arg_depth.unwrap_or(0) + 1,
