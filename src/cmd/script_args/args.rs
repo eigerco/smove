@@ -51,6 +51,7 @@ impl FromStr for ArgWithType {
         // May need to surround with quotes if not an array, so arg can be parsed into JSON.
         if !arg.starts_with('[') {
             if let FunctionArgType::Address
+            | FunctionArgType::Signer
             | FunctionArgType::Hex
             | FunctionArgType::String
             | FunctionArgType::Raw = ty
@@ -67,6 +68,7 @@ impl FromStr for ArgWithType {
 /// Type of the function argument.
 #[derive(Clone, Debug, PartialEq, Eq)]
 enum FunctionArgType {
+    Signer,
     Address,
     Bool,
     Hex,
@@ -83,6 +85,7 @@ enum FunctionArgType {
 impl fmt::Display for FunctionArgType {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
+            FunctionArgType::Signer => write!(f, "signer"),
             FunctionArgType::Address => write!(f, "address"),
             FunctionArgType::Bool => write!(f, "bool"),
             FunctionArgType::Hex => write!(f, "hex"),
@@ -119,6 +122,7 @@ impl FunctionArgType {
     /// Parse a standalone argument (not a vector) from string slice into BCS representation.
     fn parse_arg_str(&self, arg: &str) -> Result<Vec<u8>> {
         match self {
+            FunctionArgType::Signer => bcs::to_bytes(&parse_address(arg)?).map_err(Error::msg),
             FunctionArgType::Address => bcs::to_bytes(&parse_address(arg)?).map_err(Error::msg),
             FunctionArgType::Bool => {
                 bcs::to_bytes(&bool::from_str(arg).map_err(Error::msg)?).map_err(Error::msg)
@@ -217,6 +221,7 @@ impl FromStr for FunctionArgType {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s.to_lowercase().as_str() {
+            "signer" => Ok(FunctionArgType::Signer),
             "address" => Ok(FunctionArgType::Address),
             "bool" => Ok(FunctionArgType::Bool),
             "hex" => Ok(FunctionArgType::Hex),
@@ -229,7 +234,8 @@ impl FromStr for FunctionArgType {
             "u256" => Ok(FunctionArgType::U256),
             "raw" => Ok(FunctionArgType::Raw),
             wrong_arg => {Err(Error::msg(format!(
-                "Invalid arg type '{wrong_arg}'.  Must be one of: ['{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}']",
+                "Invalid arg type '{wrong_arg}'.  Must be one of: ['{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}']",
+                FunctionArgType::Signer,
                 FunctionArgType::Address,
                 FunctionArgType::Bool,
                 FunctionArgType::Hex,
