@@ -2,7 +2,7 @@ use super::script_args::ScriptFunctionArguments;
 use crate::run_context::RunContext;
 use anyhow::{Error, Result};
 use clap::Parser;
-use move_binary_format::file_format::CompiledScript;
+use move_vm_backend_common::bytecode::verify_script_integrity_and_check_signers;
 use move_vm_backend_common::types::ScriptTransaction;
 use std::fs;
 use std::path::PathBuf;
@@ -27,12 +27,13 @@ impl CreateTransaction {
             .map_err(|e| Error::msg(format!("Can't read '{}':\n{e}", compiled_script.display())))?;
 
         // Check the script bytecode and verify the parameter rules.
-        verify_script_integrity(&script_bc)?;
+        // This is checked in the Substrate layer again for the safety reasons.
+        let _signer_count = verify_script_integrity_and_check_signers(&script_bc)
+            .map_err(|e| Error::msg(format!("Script parameters verification failure {e:?}")))?;
 
         let type_args = self.script_function_args.type_args()?;
         let args = self.script_function_args.args()?;
 
-        // TODO(Rqnsom): maybe use a function to create this:
         let tx = ScriptTransaction {
             bytecode: script_bc,
             args,
@@ -40,7 +41,7 @@ impl CreateTransaction {
         };
 
         // Path to the output file.
-        let tx_name = compiled_script.file_name().unwrap(); // this can't fail in case fs::read succeds above.
+        let tx_name = compiled_script.file_name().unwrap(); // this can't fail in case `fs::read` succeeds above.
         let output_file_path = ctx.script_tx_output_path(&tx_name)?;
         if output_file_path.exists() {
             fs::remove_file(&output_file_path)?;
@@ -54,15 +55,4 @@ impl CreateTransaction {
 
         Ok(())
     }
-}
-
-// Check script integrity and ensure the parameters are correct (signers should always come first).
-fn verify_script_integrity(bytecode: &[u8]) -> Result<()> {
-    let _compiled_script = CompiledScript::deserialize(bytecode)
-        .map_err(|e| Error::msg(format!("Cannot deserialize the Move script:\n{e}")))?;
-
-    // TODO(Rqnsom): verify signer rule in the parameter list after the same check is implemented
-    // in the substrate layer.
-
-    Ok(())
 }
