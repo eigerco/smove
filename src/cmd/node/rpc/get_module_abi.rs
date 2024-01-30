@@ -4,6 +4,7 @@ use jsonrpsee::core::client::ClientT;
 use jsonrpsee::http_client::HttpClientBuilder;
 use jsonrpsee::rpc_params;
 use move_vm_backend_common::abi::ModuleAbi;
+use url::Url;
 
 /// Estimate gas for publishing modules.
 #[derive(Parser, Debug)]
@@ -17,15 +18,12 @@ pub struct GetModuleAbi {
 
 impl GetModuleAbi {
     /// Executes the command.
-    pub fn execute(&mut self) -> Result<()> {
-        // TODO: provide the rpc_url via the argument
-        let rpc_url = "http://localhost:9944/";
-
+    pub fn execute(&self, url: &Url) -> Result<()> {
         let rt = tokio::runtime::Builder::new_current_thread()
             .enable_all()
             .build()?;
 
-        let client = HttpClientBuilder::default().build(rpc_url)?;
+        let client = HttpClientBuilder::default().build(url)?;
         let params = rpc_params![&self.address, &self.name];
         let response: Result<Option<ModuleAbi>, _> =
             rt.block_on(async { client.request("mvm_getModuleABI", params).await });
