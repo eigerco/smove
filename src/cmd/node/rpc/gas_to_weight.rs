@@ -5,6 +5,7 @@ use jsonrpsee::http_client::HttpClientBuilder;
 use jsonrpsee::rpc_params;
 use serde::Deserialize;
 use std::fmt;
+use url::Url;
 
 /// Estimate gas for publishing modules.
 #[derive(Parser, Debug)]
@@ -35,15 +36,12 @@ impl fmt::Display for Weight {
 
 impl GasToWeight {
     /// Executes the command.
-    pub fn execute(&mut self) -> Result<()> {
-        // TODO: provide the rpc_url via the argument
-        let rpc_url = "http://localhost:9944/";
-
+    pub fn execute(&self, url: &Url) -> Result<()> {
         let rt = tokio::runtime::Builder::new_current_thread()
             .enable_all()
             .build()?;
 
-        let client = HttpClientBuilder::default().build(rpc_url)?;
+        let client = HttpClientBuilder::default().build(url)?;
         let params = rpc_params![self.gas];
         let response: Result<Weight, _> =
             rt.block_on(async { client.request("mvm_gasToWeight", params).await });

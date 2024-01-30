@@ -3438,6 +3438,7 @@ dependencies = [
  "serde 1.0.196",
  "serde_json",
  "tokio",
+ "url",
 ]
 
 [[package]]

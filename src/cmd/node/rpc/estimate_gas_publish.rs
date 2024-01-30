@@ -7,6 +7,7 @@ use move_core_types::vm_status::StatusCode;
 use serde::Deserialize;
 use std::fmt;
 use std::path::{Path, PathBuf};
+use url::Url;
 
 /// Estimate gas for publishing modules.
 #[derive(Parser, Debug)]
@@ -20,17 +21,14 @@ pub struct EstimateGasPublishModule {
 
 impl EstimateGasPublishModule {
     /// Executes the command.
-    pub fn execute(&mut self) -> Result<()> {
-        // TODO: provide the rpc_url via the argument
-        let rpc_url = "http://localhost:9944/";
-
+    pub fn execute(&self, url: &Url) -> Result<()> {
         let script_tx = read_bytes(&self.module_path)?;
 
         let rt = tokio::runtime::Builder::new_current_thread()
             .enable_all()
             .build()?;
 
-        let client = HttpClientBuilder::default().build(rpc_url)?;
+        let client = HttpClientBuilder::default().build(url)?;
         let params = rpc_params![&self.account_id, script_tx];
         let response: Result<Estimation, _> =
             rt.block_on(async { client.request("mvm_estimateGasPublishModule", params).await });
@@ -55,17 +53,14 @@ pub struct EstimateGasPublishBundle {
 
 impl EstimateGasPublishBundle {
     /// Executes the command.
-    pub fn execute(&mut self) -> Result<()> {
-        // TODO: provide the rpc_url via the argument
-        let rpc_url = "http://localhost:9944/";
-
+    pub fn execute(&self, url: &Url) -> Result<()> {
         let script_tx = read_bytes(&self.bundle_path)?;
 
         let rt = tokio::runtime::Builder::new_current_thread()
             .enable_all()
             .build()?;
 
-        let client = HttpClientBuilder::default().build(rpc_url)?;
+        let client = HttpClientBuilder::default().build(url)?;
         let params = rpc_params![&self.account_id, script_tx];
         let response: Result<Estimation, _> =
             rt.block_on(async { client.request("mvm_estimateGasPublishBundle", params).await });
