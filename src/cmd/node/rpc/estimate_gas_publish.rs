@@ -1,12 +1,10 @@
+use super::{read_bytes, Estimation};
 use anyhow::{Context, Result};
 use clap::Parser;
 use jsonrpsee::core::client::ClientT;
 use jsonrpsee::http_client::HttpClientBuilder;
 use jsonrpsee::rpc_params;
-use move_core_types::vm_status::StatusCode;
-use serde::Deserialize;
-use std::fmt;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use url::Url;
 
 /// Estimate gas for publishing modules.
@@ -15,6 +13,7 @@ use url::Url;
 pub struct EstimateGasPublishModule {
     #[clap(short, long, help = "Account ID in the SS58 format")]
     account_id: String,
+
     #[clap(short, long, help = "Path to the module (compiled by the smove)")]
     module_path: PathBuf,
 }
@@ -47,6 +46,7 @@ impl EstimateGasPublishModule {
 pub struct EstimateGasPublishBundle {
     #[clap(short, long, help = "Account ID in the SS58 format")]
     account_id: String,
+
     #[clap(short, long, help = "Path to the bundle (compiled by the smove)")]
     bundle_path: PathBuf,
 }
@@ -71,36 +71,4 @@ impl EstimateGasPublishBundle {
 
         Ok(())
     }
-}
-
-/// Gas estimation information.
-#[derive(Deserialize)]
-struct Estimation {
-    /// Gas used.
-    gas_used: u64,
-    /// Status code for the MoveVM execution.
-    vm_status_code: StatusCode,
-}
-
-impl fmt::Display for Estimation {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let gas_used = if matches!(self.vm_status_code, StatusCode::EXECUTED) {
-            self.gas_used
-        } else {
-            0
-        };
-
-        write!(
-            f,
-            "Estimate (gas_used: {}, vm_status_code: {:?})",
-            gas_used, self.vm_status_code
-        )
-    }
-}
-
-/// Reads bytes from a file for the given path.
-fn read_bytes(file_path: &Path) -> Result<Vec<u8>> {
-    std::fs::read(file_path)
-        .map_err(anyhow::Error::from)
-        .with_context(|| format!("Failure to read filename {}", file_path.display()))
 }

@@ -9,7 +9,7 @@ mod rpc;
 pub struct Node {
     /// Command option.
     #[clap(subcommand)]
-    node_cmd: NodeCmd,
+    cmd: NodeCmd,
 
     /// URL for the node's endpoint depending on the chosen option.
     #[clap(
@@ -34,7 +34,7 @@ pub enum NodeCmd {
 impl Node {
     /// Executes the command.
     pub fn execute(&mut self) -> Result<()> {
-        match &self.node_cmd {
+        match &self.cmd {
             NodeCmd::Rpc(rpc) => rpc.execute(&self.url),
         }
     }
@@ -54,6 +54,13 @@ pub enum Rpc {
     EstimateGasPublishBundle {
         #[clap(flatten)]
         cmd: rpc::estimate_gas_publish::EstimateGasPublishBundle,
+    },
+
+    /// Estimate gas for executing a script.
+    #[clap(about = "Estimate gas for executing a script")]
+    EstimateGasExecuteScript {
+        #[clap(flatten)]
+        cmd: rpc::estimate_gas_execute::EstimateGasExecuteScript,
     },
 
     /// Convert gas to weight.
@@ -77,6 +84,7 @@ impl Rpc {
         match self {
             Self::EstimateGasPublishModule { cmd } => cmd.execute(url),
             Self::EstimateGasPublishBundle { cmd } => cmd.execute(url),
+            Self::EstimateGasExecuteScript { cmd } => cmd.execute(url),
             Self::GasToWeight { cmd } => cmd.execute(url),
             Self::GetModuleAbi { cmd } => cmd.execute(url),
         }
