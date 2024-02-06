@@ -5,7 +5,9 @@ Package manager for the Move language in Substrate. This is a support tool for t
 
 ## Installation
 
-Install it from the source with cargo by running the following:
+The only requirement is to have [cargo][cargo] installed.
+
+Install `smove` from the source with `cargo` by running the following:
 ```sh
 cargo install --git  https://github.com/eigerco/smove
 ```
@@ -13,7 +15,7 @@ cargo install --git  https://github.com/eigerco/smove
 
 ## Build Commands
 
-The following command snippets are taken out of [our pallet-move tutorial](https://github.com/eigerco/pallet-move/blob/main/tutorial/Tutorial.md). Here, the developer Bob, with the account ID _5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty_, publishes a module named `CarWash`. To get the full impression of `smove`, we recommend going through our tutorial!
+The following command snippets are taken out of [our pallet-move tutorial](https://github.com/eigerco/pallet-move/blob/main/doc/tutorial.md). Here, the developer Bob, with the account ID _5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty_, publishes a module named `CarWash`. To get the full impression of `smove`, we recommend going through our tutorial!
 
 ### Build / Compile Projects
 
@@ -64,14 +66,14 @@ smove create-transaction --compiled-script-path build/car-wash-example/bytecode_
 
 ## More Functions
 
-`smove` is a derivative from [move-cli](https://github.com/eigerco/substrate-move/tree/main/language/tools/move-cli) and was extended by the functions shown above. The tool provides all other commands the original `move-cli` provides, which you can check out. 
+`smove` is a derivative from [move-cli](https://github.com/eigerco/substrate-move/tree/main/language/tools/move-cli) and was extended by the functions shown above. The tool provides all other commands the original `move-cli` provides, which you can check out.
 
 Use also the integrated help pages to get more information:
 ```sh
 smove --help
 ```
 ```sh
-smove 0.3.0
+smove 0.4.0
 Eiger <hello@eiger.co>
 CLI frontend for the Move compiler and VM in Substrate
 
@@ -83,7 +85,7 @@ OPTIONS:
             Generate ABIs for packages
 
         --arch <ARCHITECTURE>
-            
+
 
         --bytecode-version <BYTECODE_VERSION>
             Bytecode version to compile move code
@@ -147,3 +149,5 @@ SUBCOMMANDS:
     sandbox               Execute a sandbox command
     test                  Run Move unit tests in this package
 ```
+
+[cargo]: https://doc.rust-lang.org/cargo/getting-started/installation.html
