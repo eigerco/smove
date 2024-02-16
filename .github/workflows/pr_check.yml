@@ -1,0 +1,40 @@
+name: PR Check (fmt, clippy, test)
+
+on:
+  pull_request:
+    paths:
+      - src/**
+      - Cargo.toml
+      - .github/workflows/pr_check.yml
+
+jobs:
+  common:
+    name: Run fmt, clippy, test and execute
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          components: rustfmt, clippy
+          override: true
+
+      - name: fmt
+        run: cargo fmt --all -- --check
+
+      - name: clippy
+        shell: bash
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: test
+        shell: bash
+        run: cargo test --release --verbose
+
+      - name: run binary
+        shell: bash
+        run: cargo run --release -- --version
