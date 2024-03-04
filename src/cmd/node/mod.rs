@@ -2,7 +2,7 @@ use anyhow::Result;
 use clap::Parser;
 use url::Url;
 
-mod rpc;
+pub(crate) mod rpc;
 
 /// Commands for accessing the node.
 #[derive(Parser)]
