@@ -35,6 +35,13 @@ enum SmoveCommand {
         cmd: cmd::bundle::Bundle,
     },
 
+    /// Generate call hash for a script transaction.
+    #[clap(about = "Generate call hash for a script transaction")]
+    CallHash {
+        #[clap(flatten)]
+        cmd: cmd::call_hash::CallHash,
+    },
+
     /// Create a script transaction.
     #[clap(about = "Create a script transaction")]
     CreateTransaction {
@@ -67,5 +74,6 @@ pub fn smove_cli(cwd: PathBuf) -> Result<()> {
         SmoveCommand::Bundle { mut cmd } => cmd.execute(&ctx),
         SmoveCommand::Node { mut cmd } => cmd.execute(),
         SmoveCommand::CreateTransaction { mut cmd } => cmd.execute(&ctx),
+        SmoveCommand::CallHash { cmd } => cmd.execute(),
     }
 }

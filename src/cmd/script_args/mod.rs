@@ -4,7 +4,7 @@ use clap::Parser;
 use move_core_types::language_storage::TypeTag;
 use type_args::TypeArgVec;
 
-mod args;
+pub(crate) mod args;
 mod type_args;
 
 /// Arguments for script functions.

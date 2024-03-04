@@ -254,7 +254,7 @@ impl FromStr for FunctionArgType {
 
 /// Hex encoded bytes to allow for having bytes represented in JSON.
 #[derive(Clone, Debug, PartialEq, Eq)]
-struct HexEncodedBytes(Vec<u8>);
+pub(crate) struct HexEncodedBytes(Vec<u8>);
 
 impl FromStr for HexEncodedBytes {
     type Err = Error;
@@ -268,6 +268,12 @@ impl FromStr for HexEncodedBytes {
         Ok(Self(hex::decode(hex_str).map_err(|e| {
             format_err!("decode hex-encoded string({s:?}) failed, caused by error: {e}",)
         })?))
+    }
+}
+
+impl From<[u8; 32]> for HexEncodedBytes {
+    fn from(arr: [u8; 32]) -> Self {
+        HexEncodedBytes(arr.to_vec())
     }
 }
 
