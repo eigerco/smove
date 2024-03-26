@@ -11,18 +11,9 @@ use url::Url;
 #[derive(Parser, Debug)]
 #[clap(about = "Estimate gas for executing script")]
 pub struct EstimateGasExecuteScript {
-    /// Account ID in the SS58 format.
-    #[clap(short, long)]
-    account_id: String,
-
     /// Path to the script transaction (compiled by the smove create-transaction).
     #[clap(short, long)]
     script_transaction_path: PathBuf,
-
-    /// Cheque limit the account is willing to write from their balance account - used for
-    /// read-only and validation gas estimation purposes.
-    #[clap(short, long)]
-    cheque_limit: u128,
 }
 
 impl EstimateGasExecuteScript {
@@ -35,7 +26,7 @@ impl EstimateGasExecuteScript {
             .build()?;
 
         let client = HttpClientBuilder::default().build(url)?;
-        let params = rpc_params![&self.account_id, script_tx, self.cheque_limit];
+        let params = rpc_params![script_tx];
         let response: Result<Estimation, _> =
             rt.block_on(async { client.request("mvm_estimateGasExecuteScript", params).await });
 
