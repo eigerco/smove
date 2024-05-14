@@ -40,9 +40,10 @@ impl fmt::Display for Estimation {
         write!(
             f,
             "Gas estimation:
-             used gas: {gas_used}
-             total extrinsic weight cost with the above gas: {weight:?}
-             vm_status_code: {:?}",
+    used gas: {gas_used}
+    total extrinsic weight cost with the above gas:
+    \t{weight:?}
+    vm_status_code: {:?}",
             self.vm_status_code
         )
     }

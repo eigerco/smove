@@ -27,8 +27,6 @@ pub enum NodeCmd {
     /// Access node's RPC requests.
     #[clap(subcommand, about = "Access node's RPC requests")]
     Rpc(Rpc),
-    // NOTE: Future possibility
-    //Extrinsic(Extrinsic)
 }
 
 impl Node {
