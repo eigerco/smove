@@ -27,7 +27,7 @@ pub enum NodeCmd {
     /// Access node's RPC requests.
     #[clap(subcommand, about = "Access node's RPC requests")]
     Rpc(Rpc),
-    // TODO: Future possibility
+    // NOTE: Future possibility
     //Extrinsic(Extrinsic)
 }
 
@@ -63,13 +63,6 @@ pub enum Rpc {
         cmd: rpc::estimate_gas_execute::EstimateGasExecuteScript,
     },
 
-    /// Convert gas to weight.
-    #[clap(about = "Convert gas to weight")]
-    GasToWeight {
-        #[clap(flatten)]
-        cmd: rpc::gas_to_weight::GasToWeight,
-    },
-
     /// Get a module's ABI.
     #[clap(about = "Get a module's ABI")]
     GetModuleAbi {
@@ -85,7 +78,6 @@ impl Rpc {
             Self::EstimateGasPublishModule { cmd } => cmd.execute(url),
             Self::EstimateGasPublishBundle { cmd } => cmd.execute(url),
             Self::EstimateGasExecuteScript { cmd } => cmd.execute(url),
-            Self::GasToWeight { cmd } => cmd.execute(url),
             Self::GetModuleAbi { cmd } => cmd.execute(url),
         }
     }
