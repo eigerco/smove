@@ -32,7 +32,7 @@ impl EstimateGasExecuteScript {
 
         let estimated_gas = response.with_context(|| "RPC result failure")?;
 
-        println!("Estimated gas: {estimated_gas}");
+        println!("{estimated_gas}");
 
         Ok(())
     }

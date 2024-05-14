@@ -7,14 +7,6 @@ pub(super) mod get_module_abi;
 use move_core_types::vm_status::StatusCode;
 use serde::Deserialize;
 use std::fmt;
-use std::path::Path;
-
-/// Reads bytes from a file for the given path.
-fn read_bytes(file_path: &Path) -> Result<Vec<u8>> {
-    std::fs::read(file_path)
-        .map_err(anyhow::Error::from)
-        .with_context(|| format!("Failure to read filename {}", file_path.display()))
-}
 
 #[derive(Debug, Default, Copy, Clone, Deserialize)]
 #[allow(unused)]
@@ -47,7 +39,10 @@ impl fmt::Display for Estimation {
 
         write!(
             f,
-            "Estimate (gas_used: {gas_used}, total_extrinsic cost with gas_used: {weight:?}, vm_status_code: {:?})",
+            "Gas estimation:
+             used gas: {gas_used}
+             total extrinsic weight cost with the above gas: {weight:?}
+             vm_status_code: {:?}",
             self.vm_status_code
         )
     }
