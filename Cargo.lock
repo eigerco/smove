@@ -87,6 +87,15 @@ checksum = "25bdb32cbbdce2b519a9cd7df3a678443100e265d5e25ca763b7572a5104f5f3"
 
 [[package]]
 name = "arrayvec"
+version = "0.4.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cd9fd44efafa8690358b7408d253adf110036b88f55672a933f01d616ad9b1b9"
+dependencies = [
+ "nodrop",
+]
+
+[[package]]
+name = "arrayvec"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "23b62fc65de8e4e7f52534fb52b0f3ed04746ae267519eef2a83941e8085068b"
@@ -105,7 +114,7 @@ checksum = "c6fa2087f2753a7da8cc1c0dbfcf89579dd57458e36769de5ac750b4671737ca"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -151,7 +160,7 @@ name = "bcs"
 version = "0.1.4"
 source = "git+https://github.com/eigerco/bcs.git?branch=master#850598d0cb128f10ecf4ce87ff94281ee46e6524"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -159,7 +168,7 @@ name = "bcs"
 version = "0.1.4"
 source = "git+https://github.com/eigerco/bcs.git#850598d0cb128f10ecf4ce87ff94281ee46e6524"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -168,7 +177,7 @@ version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "85b6598a2f5d564fb7855dc6b06fd1c38cff5a72bd8b863a4d021938497b440a"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
  "thiserror",
 ]
 
@@ -178,7 +187,7 @@ version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3a8241f3ebb85c056b509d4327ad0358fbbba6ffb340bf388f26350aeda225b1"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -243,6 +252,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "blake2-rfc"
+version = "0.2.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5d6d530bdd2d52966a6d03b7a964add7ae1a288d25214066fd4b600f0f796400"
+dependencies = [
+ "arrayvec 0.4.12",
+ "constant_time_eq",
+]
+
+[[package]]
 name = "block-buffer"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -283,7 +302,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "05efc5cfd9110c8416e471df0e96702d58690178e206e61b7173706673c93706"
 dependencies = [
  "memchr",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -301,7 +320,7 @@ checksum = "c3ac9f8b63eca6fd385229b3675f6cc0dc5c8a5c8a54a59d4f52ffd670d87b0c"
 [[package]]
 name = "bytecode-interpreter-crypto"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "curve25519-dalek-fiat",
@@ -422,7 +441,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3362992a0d9f1dd7c3d0e89e0ab2bb540b7a95fea8cd798090e758fda2899b5e"
 dependencies = [
  "codespan-reporting",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -431,7 +450,7 @@ version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3538270d33cc669650c4b093848450d380def10c331d38c768e34cac80576e6e"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
  "termcolor",
  "unicode-width",
 ]
@@ -465,12 +484,18 @@ dependencies = [
  "lazy_static 1.4.0",
  "nom",
  "rust-ini",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde-hjson",
  "serde_json",
  "toml",
  "yaml-rust",
 ]
+
+[[package]]
+name = "constant_time_eq"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "245097e9a4535ee1e3e3931fcfcd55a796a44c643e8596ff6566d68f09b87bbc"
 
 [[package]]
 name = "core-foundation"
@@ -705,7 +730,7 @@ version = "1.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "91cff35c70bba8a626e3185d8cd48cc11b5437e1a5bcd15b9b5fa3c64b6dfee7"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
  "signature",
 ]
 
@@ -718,7 +743,7 @@ dependencies = [
  "curve25519-dalek-fiat",
  "ed25519",
  "rand",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_bytes",
  "sha2 0.9.9",
  "zeroize",
@@ -726,9 +751,9 @@ dependencies = [
 
 [[package]]
 name = "either"
-version = "1.11.0"
+version = "1.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a47c1c47d2f5964e29c61246e81db715514cd532db6b5116a25ea3c03d6780a2"
+checksum = "3dca9240753cf90908d7e4aac30f630662b02aebaa1b58a3cadabdb23385b58b"
 
 [[package]]
 name = "encoding_rs"
@@ -900,7 +925,7 @@ checksum = "87750cf4b7a4c0625b1529e4c543c2182106e4dedc60a2a6455e00d212c489ac"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -945,9 +970,9 @@ dependencies = [
 
 [[package]]
 name = "getrandom"
-version = "0.2.15"
+version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c4567c8db10ae91089c99af84c68c38da3ec2f087c3f82960bcdbf3656b6f4d7"
+checksum = "94b22e06ecb0110981051723910cbf0b5f5e09a2062dd7663334ee79a9d1286c"
 dependencies = [
  "cfg-if",
  "libc",
@@ -1331,7 +1356,7 @@ dependencies = [
  "futures-util",
  "hyper",
  "jsonrpsee-types",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "thiserror",
  "tokio",
@@ -1349,7 +1374,7 @@ dependencies = [
  "hyper-rustls",
  "jsonrpsee-core",
  "jsonrpsee-types",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "thiserror",
  "tokio",
@@ -1366,7 +1391,7 @@ checksum = "3266dfb045c9174b24c77c2dfe0084914bb23a6b2597d70c9dc6018392e1cd1b"
 dependencies = [
  "anyhow",
  "beef",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "thiserror",
 ]
@@ -1410,9 +1435,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.154"
+version = "0.2.153"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae743338b92ff9146ce83992f766a31066a91a8c84a45e0e9f21e7cf6de6d346"
+checksum = "9c198f91728a82281a64e1f4f9eeb25d82cb32a5de251c6bd1b5154d63a8e7bd"
 
 [[package]]
 name = "libm"
@@ -1438,9 +1463,9 @@ checksum = "0717cef1bc8b636c6e1c1bbdefc09e6322da8a9321966e8928ef80d20f7f770f"
 
 [[package]]
 name = "linux-raw-sys"
-version = "0.4.13"
+version = "0.4.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "01cda141df6706de531b6c46c3a33ecca755538219bd484262fa09410c13539c"
+checksum = "78b3ae25bc7c8c38cec158d1f2757ee79e9b3740fbc7ccf0e59e4b08d793fa89"
 
 [[package]]
 name = "lock_api"
@@ -1458,7 +1483,7 @@ version = "0.4.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "90ed8c1e510134f979dbc4f070f87d4313098b704861a105fe34231c70a3901c"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -1518,7 +1543,7 @@ dependencies = [
 [[package]]
 name = "move-abigen"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1529,31 +1554,31 @@ dependencies = [
  "move-command-line-common",
  "move-core-types",
  "move-model",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-binary-format"
 version = "0.0.3"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "hashbrown 0.14.5",
  "move-core-types",
  "ref-cast",
- "serde 1.0.201",
+ "serde 1.0.202",
  "variant_count",
 ]
 
 [[package]]
 name = "move-borrow-graph"
 version = "0.0.1"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 
 [[package]]
 name = "move-bytecode-source-map"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1562,13 +1587,13 @@ dependencies = [
  "move-core-types",
  "move-ir-types",
  "move-symbol-pool",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-bytecode-utils"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -1580,7 +1605,7 @@ dependencies = [
 [[package]]
 name = "move-bytecode-verifier"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "fail",
@@ -1594,7 +1619,7 @@ dependencies = [
 [[package]]
 name = "move-bytecode-viewer"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "clap",
@@ -1611,7 +1636,7 @@ dependencies = [
 [[package]]
 name = "move-cli"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1646,7 +1671,7 @@ dependencies = [
  "read-write-set",
  "read-write-set-dynamic",
  "reqwest",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "serde_yaml",
  "tempfile",
@@ -1657,7 +1682,7 @@ dependencies = [
 [[package]]
 name = "move-command-line-common"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "difference",
@@ -1667,7 +1692,7 @@ dependencies = [
  "move-vm-support",
  "num-bigint",
  "once_cell",
- "serde 1.0.201",
+ "serde 1.0.202",
  "sha2 0.9.9",
  "walkdir",
 ]
@@ -1675,7 +1700,7 @@ dependencies = [
 [[package]]
 name = "move-compiler"
 version = "0.0.1"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1705,7 +1730,7 @@ dependencies = [
 [[package]]
 name = "move-core-types"
 version = "0.0.4"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.4 (git+https://github.com/eigerco/bcs.git?branch=master)",
@@ -1718,7 +1743,7 @@ dependencies = [
  "rand",
  "ref-cast",
  "scale-info",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_bytes",
  "uint",
 ]
@@ -1726,7 +1751,7 @@ dependencies = [
 [[package]]
 name = "move-coverage"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1740,13 +1765,13 @@ dependencies = [
  "move-ir-types",
  "once_cell",
  "petgraph 0.5.1",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-disassembler"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "clap",
@@ -1764,7 +1789,7 @@ dependencies = [
 [[package]]
 name = "move-docgen"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "codespan",
@@ -1776,13 +1801,13 @@ dependencies = [
  "num",
  "once_cell",
  "regex",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-errmapgen"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1790,13 +1815,13 @@ dependencies = [
  "move-command-line-common",
  "move-core-types",
  "move-model",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-ir-to-bytecode"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "codespan-reporting",
@@ -1815,7 +1840,7 @@ dependencies = [
 [[package]]
 name = "move-ir-to-bytecode-syntax"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "hex",
@@ -1828,7 +1853,7 @@ dependencies = [
 [[package]]
 name = "move-ir-types"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "hex",
@@ -1836,13 +1861,13 @@ dependencies = [
  "move-core-types",
  "move-symbol-pool",
  "once_cell",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-model"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "codespan",
@@ -1862,13 +1887,13 @@ dependencies = [
  "num",
  "once_cell",
  "regex",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-package"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1893,7 +1918,7 @@ dependencies = [
  "ptree",
  "regex",
  "reqwest",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_yaml",
  "sha2 0.9.9",
  "tempfile",
@@ -1905,7 +1930,7 @@ dependencies = [
 [[package]]
 name = "move-prover"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1932,7 +1957,7 @@ dependencies = [
  "once_cell",
  "pretty",
  "rand",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "simplelog",
  "tokio",
@@ -1942,7 +1967,7 @@ dependencies = [
 [[package]]
 name = "move-prover-boogie-backend"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1962,7 +1987,7 @@ dependencies = [
  "pretty",
  "rand",
  "regex",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "tera",
  "tokio",
@@ -1971,18 +1996,18 @@ dependencies = [
 [[package]]
 name = "move-read-write-set-types"
 version = "0.0.3"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "move-binary-format",
  "move-core-types",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-resource-viewer"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -1991,13 +2016,13 @@ dependencies = [
  "move-bytecode-utils",
  "move-core-types",
  "once_cell",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-stackless-bytecode"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "codespan",
  "codespan-reporting",
@@ -2018,13 +2043,13 @@ dependencies = [
  "once_cell",
  "paste",
  "petgraph 0.5.1",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-stackless-bytecode-interpreter"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bytecode-interpreter-crypto",
@@ -2036,14 +2061,15 @@ dependencies = [
  "move-model",
  "move-stackless-bytecode",
  "num",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-stdlib"
 version = "0.1.1"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
+ "blake2-rfc",
  "hex",
  "log",
  "move-binary-format",
@@ -2055,24 +2081,27 @@ dependencies = [
  "move-prover",
  "move-vm-runtime",
  "move-vm-types",
+ "ripemd",
  "sha2 0.10.8",
  "sha3 0.10.8",
+ "siphasher 1.0.1",
  "smallvec",
+ "tiny-keccak",
 ]
 
 [[package]]
 name = "move-symbol-pool"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "once_cell",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-table-extension"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.6",
@@ -2089,7 +2118,7 @@ dependencies = [
 [[package]]
 name = "move-unit-test"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "better_any",
@@ -2120,7 +2149,7 @@ dependencies = [
 [[package]]
 name = "move-vm-backend-common"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "bcs 0.1.4 (git+https://github.com/eigerco/bcs.git?branch=master)",
@@ -2133,14 +2162,14 @@ dependencies = [
  "move-vm-types",
  "parity-scale-codec",
  "scale-info",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_bytes",
 ]
 
 [[package]]
 name = "move-vm-runtime"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "better_any",
  "fail",
@@ -2157,7 +2186,7 @@ dependencies = [
 [[package]]
 name = "move-vm-support"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "blake2",
@@ -2168,25 +2197,25 @@ dependencies = [
 [[package]]
 name = "move-vm-test-utils"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "lazy_static 1.4.0",
  "move-binary-format",
  "move-core-types",
  "move-vm-types",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "move-vm-types"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "bcs 0.1.4 (git+https://github.com/eigerco/bcs.git?branch=master)",
  "move-binary-format",
  "move-core-types",
- "serde 1.0.201",
+ "serde 1.0.202",
  "smallvec",
 ]
 
@@ -2221,6 +2250,12 @@ dependencies = [
  "security-framework-sys",
  "tempfile",
 ]
+
+[[package]]
+name = "nodrop"
+version = "0.1.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "72ef4a56884ca558e5ddb05a1d1e7e1bfd9a68d9ed024c21704cc98872dae1bb"
 
 [[package]]
 name = "nom"
@@ -2378,7 +2413,7 @@ checksum = "a948666b637a0f465e8564c73e89d4dde00d72d4d473cc972f390fc3dcee7d9c"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -2448,7 +2483,7 @@ dependencies = [
  "byte-slice-cast",
  "impl-trait-for-tuples",
  "parity-scale-codec-derive",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -2563,7 +2598,7 @@ dependencies = [
  "pest_meta",
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -2642,7 +2677,7 @@ version = "0.11.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "90fcb95eef784c2ac79119d1dd819e162b5da872ce6f3c3abe1e8ca1c082f72b"
 dependencies = [
- "siphasher",
+ "siphasher 0.3.11",
 ]
 
 [[package]]
@@ -2662,7 +2697,7 @@ checksum = "2f38a4412a78282e09a2cf38d195ea5420d15ba0602cb375210efbc877243965"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -2763,7 +2798,7 @@ dependencies = [
  "config",
  "directories",
  "petgraph 0.6.5",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde-value",
  "tint",
 ]
@@ -2845,7 +2880,7 @@ dependencies = [
 [[package]]
 name = "read-write-set"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -2860,7 +2895,7 @@ dependencies = [
 [[package]]
 name = "read-write-set-dynamic"
 version = "0.1.0"
-source = "git+https://github.com/eigerco/substrate-move.git#a32eeb63df4bfbb6911a25d2a75482cc9c220d73"
+source = "git+https://github.com/eigerco/substrate-move.git#1dc43c7bb6262f9b243a4c93f2b18776661c50e4"
 dependencies = [
  "anyhow",
  "move-binary-format",
@@ -2924,7 +2959,7 @@ checksum = "bcc303e793d3734489387d205e9b186fac9c6cfacedd98cbb2e8a5943595f3e6"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -2981,7 +3016,7 @@ dependencies = [
  "percent-encoding",
  "pin-project-lite",
  "rustls-pemfile",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "serde_urlencoded",
  "sync_wrapper",
@@ -3009,6 +3044,15 @@ dependencies = [
  "spin 0.9.8",
  "untrusted",
  "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "ripemd"
+version = "0.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd124222d17ad93a644ed9d011a40f4fb64aa54275c08cc216524a9ea82fb09f"
+dependencies = [
+ "digest 0.10.7",
 ]
 
 [[package]]
@@ -3181,9 +3225,9 @@ checksum = "9dad3f759919b92c3068c696c15c3d17238234498bbdcc80f2c469606f948ac8"
 
 [[package]]
 name = "serde"
-version = "1.0.201"
+version = "1.0.202"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "780f1cebed1629e4753a1a38a3c72d30b97ec044f0aef68cb26650a3c5cf363c"
+checksum = "226b61a0d411b2ba5ff6d7f73a476ac4f8bb900373459cd00fab8512828ba395"
 dependencies = [
  "serde_derive",
 ]
@@ -3207,7 +3251,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f05a5f801ac62a51a49d378fdb3884480041b99aced450b28990673e8ff99895"
 dependencies = [
  "once_cell",
- "serde 1.0.201",
+ "serde 1.0.202",
  "thiserror",
 ]
 
@@ -3218,7 +3262,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f3a1a3341211875ef120e117ea7fd5228530ae7e7036a779fdc9117be6b3282c"
 dependencies = [
  "ordered-float",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -3227,18 +3271,18 @@ version = "0.11.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8b8497c313fd43ab992087548117643f6fcd935cbf36f176ffda0aacf9591734"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.201"
+version = "1.0.202"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c5e405930b9796f1c00bee880d03fc7e0bb4b9a11afc776885ffe84320da2865"
+checksum = "6048858004bcff69094cd972ed40a32500f153bd3be9f716b2eed2e8217c4838"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -3249,7 +3293,7 @@ checksum = "455182ea6142b14f93f4bc5320a2b31c1f266b66a4a5c858b013302a5d8cbfc3"
 dependencies = [
  "itoa",
  "ryu",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -3261,7 +3305,7 @@ dependencies = [
  "form_urlencoded",
  "itoa",
  "ryu",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -3272,7 +3316,7 @@ checksum = "578a7433b776b56a35785ed5ce9a7e777ac0598aac5a6dd1b4b18a307c7fc71b"
 dependencies = [
  "indexmap 1.9.3",
  "ryu",
- "serde 1.0.201",
+ "serde 1.0.202",
  "yaml-rust",
 ]
 
@@ -3376,6 +3420,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "38b58827f4464d87d377d175e90bf58eb00fd8716ff0a62f80356b5e61555d0d"
 
 [[package]]
+name = "siphasher"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "56199f7ddabf13fe5074ce809e7d3f42b42ae711800501b5b16ea82ad029c39d"
+
+[[package]]
 name = "sized-chunks"
 version = "0.6.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3430,7 +3480,7 @@ dependencies = [
  "move-vm-runtime",
  "move-vm-support",
  "move-vm-test-utils",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "tokio",
  "url",
@@ -3495,9 +3545,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.63"
+version = "2.0.64"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bf5be731623ca1a1fb7d8be6f261a3be6d3e2337b8a1f97be944d020c8fcb704"
+checksum = "7ad3dee41f36859875573074334c200d1add8e4a87bb37113ebd31d926b7b11f"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -3565,7 +3615,7 @@ dependencies = [
  "pest_derive",
  "rand",
  "regex",
- "serde 1.0.201",
+ "serde 1.0.202",
  "serde_json",
  "slug",
  "unic-segment",
@@ -3603,7 +3653,7 @@ checksum = "e2470041c06ec3ac1ab38d0356a6119054dedaea53e12fbefc0de730a1c08524"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -3613,6 +3663,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7af24570664a3074673dbbf69a65bdae0ae0b72f2949b1adfbacb736ee4d6896"
 dependencies = [
  "lazy_static 0.2.11",
+]
+
+[[package]]
+name = "tiny-keccak"
+version = "2.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2c9d3793400a45f954c52e73d068316d76b6f4e36977e3fcebb13a2721e80237"
+dependencies = [
+ "crunchy",
 ]
 
 [[package]]
@@ -3657,7 +3716,7 @@ checksum = "5b8a1e28f2deaa14e508979454cb3a223b10b938b45af148bc0986de36f1923b"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -3699,14 +3758,14 @@ version = "0.5.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f4f7f0dd8d50a853a531c426359045b1998f04219d88799810762cd4ad314234"
 dependencies = [
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
 name = "toml_datetime"
-version = "0.6.5"
+version = "0.6.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3550f4e9685620ac18a50ed434eb3aec30db8ba93b0287467bca5826ea25baf1"
+checksum = "4badfd56924ae69bcc9039335b2e017639ce3f9b001c393c1b2d1ef846ce2cbf"
 
 [[package]]
 name = "toml_edit"
@@ -3717,7 +3776,7 @@ dependencies = [
  "combine",
  "indexmap 1.9.3",
  "itertools",
- "serde 1.0.201",
+ "serde 1.0.202",
 ]
 
 [[package]]
@@ -3778,7 +3837,7 @@ checksum = "34704c8d6ebcbc939824180af020566b01a7c01f80641264eba0999f6c2b6be7"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -4013,7 +4072,7 @@ dependencies = [
  "once_cell",
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
  "wasm-bindgen-shared",
 ]
 
@@ -4047,7 +4106,7 @@ checksum = "e94f17b526d0a461a191c78ea52bbce64071ed5c04c9ffe424dcb38f74171bb7"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
  "wasm-bindgen-backend",
  "wasm-bindgen-shared",
 ]
@@ -4318,7 +4377,7 @@ checksum = "15e934569e47891f7d9411f1a451d947a60e000ab3bd24fbb970f000387d1b3b"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
 
 [[package]]
@@ -4338,5 +4397,5 @@ checksum = "ce36e65b0d2999d2aafac989fb249189a141aee1f53c612c1f37d72631959f69"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.63",
+ "syn 2.0.64",
 ]
