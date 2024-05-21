@@ -48,7 +48,7 @@ smove node rpc estimate-gas-publish-module --account-id 5FHneW46xGXgs5mUiveU4sbT
 ### Estimating Gas for Script Execution
 
 ```sh
-smove node rpc estimate-gas-execute-script -a 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty -s build/car-wash-example/script_transactions/initial_coin_minting.mvt --cheque-limit 0
+smove node rpc estimate-gas-execute-script -a 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty -s build/car-wash-example/script_transactions/initial_coin_minting.mvt
 ```
 
 ### Request a Module's ABI
@@ -73,7 +73,7 @@ Use also the integrated help pages to get more information:
 smove --help
 ```
 ```sh
-smove 0.4.0
+smove 0.6.0
 Eiger <hello@eiger.co>
 CLI frontend for the Move compiler and VM in Substrate
 
