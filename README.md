@@ -25,7 +25,7 @@ smove build
 ```
 or with absolute/relative path:
 ```sh
-smove build -p pallet-move/tests/assets/move-projects/car-wash-example
+smove build -p pallet-move/src/assets/move-projects/car-wash-example
 ```
 
 ### Generate Bundles
@@ -48,7 +48,7 @@ smove node rpc estimate-gas-publish-module --account-id 5FHneW46xGXgs5mUiveU4sbT
 ### Estimating Gas for Script Execution
 
 ```sh
-smove node rpc estimate-gas-execute-script -a 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty -s build/car-wash-example/script_transactions/initial_coin_minting.mvt
+smove node rpc estimate-gas-execute-script -s build/car-wash-example/script_transactions/initial_coin_minting.mvt
 ```
 
 ### Request a Module's ABI
