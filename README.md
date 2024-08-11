@@ -1,6 +1,7 @@
 # smove
 
-Package manager for the Move language in Substrate. This is a support tool for the [Move Pallet](https://github.com/eigerco/pallet-move). Handles the gas estimation, the serialization of script and module transactions, and the inspection of the module's ABIs.
+This repository is part of the [pallet-move](https://github.com/eigerco/pallet-move) project, which enables users to write smart contracts in Substrate-based blockchains with the Move language.
+It's a package manager for the Move language in Substrate. Handles the gas estimation, the serialization of script and module transactions, and the inspection of the module's ABIs.
 
 
 ## Installation
@@ -151,6 +152,13 @@ SUBCOMMANDS:
 ```
 
 [cargo]: https://doc.rust-lang.org/cargo/getting-started/installation.html
+
+## See also
+
+- [pallet-move](https://github.com/eigerco/pallet-move) - Main repo containing the Move pallet.
+- [move-stdlib](https://github.com/eigerco/move-stdlib) - Provides elementary Move functions in Move smart contracts. 
+- [substrate-move](https://github.com/eigerco/substrate-move) - A modified MoveVM fork for the use of MoveVM in the pallet-move repo.
+- [substrate-stdlib](https://github.com/eigerco/substrate-stdlib) - Provides elementary Substrate functions in Move smart contracts.
 
 ## About [Eiger](https://www.eiger.co)
 
