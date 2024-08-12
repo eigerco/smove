@@ -1,11 +1,12 @@
 # smove
 
-Package manager for the Move language in Substrate. This is a support tool for the [Move Pallet](https://github.com/eigerco/pallet-move). Handles the gas estimation, the serialization of script and module transactions, and the inspection of the module's ABIs.
+This repository is part of the [pallet-move] project, which enables users to write smart contracts in Substrate-based blockchains with the Move language.
+It's a package manager for the Move language in Substrate. Handles the gas estimation, the serialization of script and module transactions, and the inspection of the module's ABIs.
 
 
 ## Installation
 
-The only requirement is to have [cargo][cargo] installed.
+The only requirement is to have [cargo] installed.
 
 Install `smove` from the source with `cargo` by running the following:
 ```sh
@@ -15,7 +16,7 @@ cargo install --git  https://github.com/eigerco/smove
 
 ## Build Commands
 
-The following command snippets are taken out of [our pallet-move tutorial](https://github.com/eigerco/pallet-move/blob/main/doc/tutorial.md). Here, the developer Bob, with the account ID _5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty_, publishes a module named `CarWash`. To get the full impression of `smove`, we recommend going through our tutorial!
+The following command snippets are taken out of [our pallet-move tutorial][tutorial]. Here, the developer Bob, with the account ID _5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty_, publishes a module named `CarWash`. To get the full impression of `smove`, we recommend going through our tutorial!
 
 ### Build / Compile Projects
 
@@ -66,7 +67,7 @@ smove create-transaction --compiled-script-path build/car-wash-example/bytecode_
 
 ## More Functions
 
-`smove` is a derivative from [move-cli](https://github.com/eigerco/substrate-move/tree/main/language/tools/move-cli) and was extended by the functions shown above. The tool provides all other commands the original `move-cli` provides, which you can check out.
+`smove` is a derivative from [move-cli] and was extended by the functions shown above. The tool provides all other commands the original `move-cli` provides, which you can check out.
 
 Use also the integrated help pages to get more information:
 ```sh
@@ -150,4 +151,25 @@ SUBCOMMANDS:
     test                  Run Move unit tests in this package
 ```
 
+## See also
+
+- [pallet-move] - Main repo containing the Move pallet.
+- [move-stdlib] - Provides elementary Move functions in Move smart contracts. 
+- [substrate-move] - A modified MoveVM fork for the use of MoveVM in the pallet-move repo.
+- [substrate-stdlib] - Provides elementary Substrate functions in Move smart contracts.
+
+## About [Eiger](https://www.eiger.co)
+
+We are engineers. We contribute to various ecosystems by building low level implementations and core components. We believe in Move and in Polkadot and wanted to bring them together. Read more about this project on [our blog](https://www.eiger.co/blog/eiger-brings-move-to-polkadot).
+
+Contact us at hello@eiger.co
+Follow us on [X/Twitter](https://x.com/eiger_co)
+
+
 [cargo]: https://doc.rust-lang.org/cargo/getting-started/installation.html
+[move-cli]: https://github.com/eigerco/substrate-move/tree/main/language/tools/move-cli
+[move-stdlib]: https://github.com/eigerco/move-stdlib
+[pallet-move]: https://github.com/eigerco/pallet-move
+[substrate-move]: https://github.com/eigerco/substrate-move
+[substrate-stdlib]: https://github.com/eigerco/substrate-stdlib
+[tutorial]: https://github.com/eigerco/pallet-move/blob/main/doc/tutorial.md
