@@ -1,12 +1,12 @@
 # smove
 
-This repository is part of the [pallet-move][pallet-move] project, which enables users to write smart contracts in Substrate-based blockchains with the Move language.
+This repository is part of the [pallet-move] project, which enables users to write smart contracts in Substrate-based blockchains with the Move language.
 It's a package manager for the Move language in Substrate. Handles the gas estimation, the serialization of script and module transactions, and the inspection of the module's ABIs.
 
 
 ## Installation
 
-The only requirement is to have [cargo][cargo] installed.
+The only requirement is to have [cargo] installed.
 
 Install `smove` from the source with `cargo` by running the following:
 ```sh
@@ -67,7 +67,7 @@ smove create-transaction --compiled-script-path build/car-wash-example/bytecode_
 
 ## More Functions
 
-`smove` is a derivative from [move-cli][move-cli] and was extended by the functions shown above. The tool provides all other commands the original `move-cli` provides, which you can check out.
+`smove` is a derivative from [move-cli] and was extended by the functions shown above. The tool provides all other commands the original `move-cli` provides, which you can check out.
 
 Use also the integrated help pages to get more information:
 ```sh
@@ -153,10 +153,10 @@ SUBCOMMANDS:
 
 ## See also
 
-- [pallet-move][pallet-move] - Main repo containing the Move pallet.
-- [move-stdlib][move-stdlib] - Provides elementary Move functions in Move smart contracts. 
-- [substrate-move][substrate-move] - A modified MoveVM fork for the use of MoveVM in the pallet-move repo.
-- [substrate-stdlib][substrate-stdlib] - Provides elementary Substrate functions in Move smart contracts.
+- [pallet-move] - Main repo containing the Move pallet.
+- [move-stdlib] - Provides elementary Move functions in Move smart contracts. 
+- [substrate-move] - A modified MoveVM fork for the use of MoveVM in the pallet-move repo.
+- [substrate-stdlib] - Provides elementary Substrate functions in Move smart contracts.
 
 ## About [Eiger](https://www.eiger.co)
 
